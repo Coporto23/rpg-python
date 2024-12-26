@@ -66,11 +66,11 @@ while contadormenu == 0:
 			print('*                                      	')
 			print('****************************************')
 
-			opcionClase = input('Nombre: ')
+			opcionNombre = input('Nombre: ')
 
 			print('--------------------------------------------------------')
 			print('****************************************')
-			print(f'*  ¿Su nombre es {opcionClase}?         ')
+			print(f'*  ¿Su nombre es {opcionNombre}?         ')
 			print('* 1. No                                  ')
 			print('* 2. Si                                  ')
 			print('****************************************')
@@ -78,6 +78,9 @@ while contadormenu == 0:
 			opcionconfnombre = int(input('Ingrese una opción: '))
 
 			if opcionconfnombre == 2:
+
+				personaje.nombre = opcionNombre 
+				print('')
 				contadornombre = 1
 
 			else:
@@ -97,7 +100,7 @@ while contadormenu == 0:
 
 	elif opcion == 2:
 		contadormenu = 1
-		
+
 	else:
 		print('Por favor elija una opcion correcta')
 
