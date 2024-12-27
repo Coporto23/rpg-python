@@ -2,6 +2,7 @@
 """ Proyecto RPG Prueba combate"""
 
 from clases.jugador import Personaje
+from clases.enemigo import Enemigo
 
 personaje = Personaje()
 
@@ -62,6 +63,7 @@ while contadormenu == 0:
 		while contadornombre == 0:
 			print('--------------------------------------------------------')
 			print('****************************************')
+			print('*                                      	')
 			print('*  Favor indicar su nombre            	')
 			print('*                                      	')
 			print('****************************************')
@@ -88,15 +90,79 @@ while contadormenu == 0:
 
 		""" Juego / Combate """
 		contadorjuego = 0
-		while contadorjuego == 0:
+		while contadorjuego != 11:
+
+			contadorjuego = contadorjuego + 1
+
 			print('--------------------------------------------------------')
 			print('****************************************')
-			print('*              Estadisticas     			')
-			print(f'* Nombre = 								')
-			print(f'* Vida = 								')
-			print(f'* Ataque =  							')
+			print('*                                      	')
+			print(f'*  Estás en el nivel {contadorjuego}    ')
+			print('*                                      	')
 			print('****************************************')
-			opcionjuego = int(input('Ingrese una opción: '))
+
+			print('--------------------------------------------------------')
+			print('*********************** SLIME **************************')
+			print('*               ⠀⠀⠀⠀⢀⣀⣀⣀⣀⣀⣀⣀⣀⡀⠀⠀⠀⠀⠀⠀⠀               ')
+			print('*           ⠀⠀⠀⠀⣠⣾⠿⠛⠉⠉⠉⠉⠉⠉⠛⠿⣷⣄⠀⠀⠀⠀⠀              ')
+			print('*          ⠀⠀⠀⣰⡿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢿⣆⠀⠀⠀             ')
+			print('*         ⠀⠀⠀⢠⣿⠃⠀⠀⠀⠀⠀⣀⡀⠀⠀⠀⠀⠀⠀⢸⣿⡀⠀⠀            ')
+			print('*         ⠀⠀⢀⣿⡇⠀⠀⢠⡶⠶⢿⣿⣿⡿⠶⢦⡀⠀⠀⢸⣿⡇⠀            ')
+			print('*         ⠀⠀⢸⣿⠃⠀⢀⣾⡇⠀⢸⣿⣿⠁⠀⢸⣷⡀⠀⠘⣿⡇⠀            ')
+			print('*         ⠀⠀⢸⣿⠀⠀⢸⣿⣧⣤⣼⣿⣿⣧⣤⣼⣿⡇⠀⠀⣿⡇⠀            ')
+			print('*         ⠀⠀⠘⣿⡀⠀⠈⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠁⠀⢀⣿⡇⠀            ')
+			print('*          ⠀⠀⠹⣧⠀⠀⠈⠛⠛⠛⠛⠛⠛⠛⠛⠋⠀⠀⢀⣾⡟⠀⠀            ')
+			print('*           ⠀⠀⠀⠻⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⡿⠁⠀⠀⠀            ')
+			print('*             ⠀⠀⠀⠙⠿⣶⣤⣤⣤⣤⣤⣤⣤⣶⡿⠿⠁⠀⠀⠀⠀⠀           ')
+			print('*******************************************************')
+
+			enemigo = Enemigo()
+
+			enemigo.nombre = 'Slime'
+			enemigo.vida = 50
+			enemigo.vidamax = 50
+			enemigo.ataque = 10
+			enemigo.defensa = 0
+
+			contadorcombate = 0
+			while contadorcombate == 0:
+				if enemigo.vida == 0:
+
+					print('****************************************')
+					print('* HAS GANADO!!                          ')
+					print('****************************************')
+					contadorcombate = 1
+				else:
+					print('--------------------------------------------------------')
+					print('****************************************')
+					print('*                                      	')
+					print(f'*  {personaje.nombre} {personaje.vida}/{personaje.vidamax} HP   ')
+					print(f'*  {enemigo.nombre} {enemigo.vida}/{enemigo.vidamax} HP    		')
+					print('*                                      	')
+					print('****************************************')
+					contadorturno = 0
+
+					while contadorturno == 0:
+						
+
+						print('****************************************')
+						print('*  ¿Que quieres hacer?			       ')
+						print('* 1. Ataque                             ')
+						print('* 2. Defensa                            ')
+						print('****************************************')
+						opcionturno = int(input('Elija una opción: '))
+						if opcionturno == 1:
+							enemigo.vida = enemigo.vida - personaje.ataque
+							if enemigo.vida <= 0:
+								enemigo.vida = 0
+							print('****************************************')
+							print(f'* Has hecho {personaje.ataque} de daño ')
+							print('****************************************')
+							contadorturno = 1
+						else:
+							contadorturno = 1
+
+
 
 	elif opcion == 2:
 		contadormenu = 1
